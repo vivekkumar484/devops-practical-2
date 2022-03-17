@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+	
+
+ stages {
+      stage('checkout') {
+           steps {
+             
+                git branch: 'master', url: 'https://github.com/srikanta1219/CI-CD-using-Docker-master.git'
+             
+          }
+        }
+       
+
+  stage('Docker Build and Tag') {
+           steps {
+              
+                sh 'docker build -t devopsclass:latest .' 
+                sh 'docker tag devopsclass srikanta1219/devopsclass:$BUILD_NUMBER'
+               
+          }
+        } 
+    }
+}
