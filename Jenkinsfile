@@ -19,6 +19,15 @@ pipeline {
                 sh 'docker tag devopsclass srikanta1219/devopsclass:$BUILD_NUMBER'
                
           }
-        } 
+        }
+  stage('Publish image to Docker Hub') {
+            steps {
+        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+           sh  'docker push srikanta/samplewebapp:$BUILD_NUMBER' 
+		}
+                  
+          }
+        }
+		
     }
 }
