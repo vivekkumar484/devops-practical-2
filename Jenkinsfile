@@ -15,15 +15,15 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t devopsclass:latest .' 
-                sh 'docker tag devopsclass srikanta1219/devopsclass:$BUILD_NUMBER'
+                sh 'docker build -t devops9class:latest .' 
+                sh 'docker tag devops9class srikanta1219/devops9class:$BUILD_NUMBER'
                
           }
         }
   stage('Publish image to Docker Hub') {
             steps {
         withDockerRegistry([ credentialsId: "DockerHub", url: "" ]) {
-           sh  'docker push srikanta1219/devopsclass:$BUILD_NUMBER' 
+           sh  'docker push srikanta1219/devops9class:$BUILD_NUMBER' 
 		}
                   
           }
